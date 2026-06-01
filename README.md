@@ -1,2 +1,2 @@
 # RDNet
-RDNet：Camouflaged Object Detection Based on Reverse Residual and Dynamic Filtering Guidance 
+RDNet: Dynamic Filtering Guided Transformer with Cross-Batch Feature Retention for Camouflaged Object Detection
