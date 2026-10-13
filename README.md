@@ -18,7 +18,7 @@ The model is defined in `models/RDNet.py`. Pretrained weights are available thro
 RDNet processes an input image through four stages:
 
 1. **Multi-scale feature extraction:** SMT-Tiny extracts features at four spatial resolutions.
-2. **Coarse estimation and feature mixing:** A coarse estimation module predicts an initial mask, while `CFRM` processes the backbone features.
+2. **Coarse estimation and feature mixing:** A coarse estimation module predicts an initial mask, while `ImprovedTimeMixer` processes the backbone features.
 3. **Attention and filtering:** Channel attention, spatial attention, and learnable filters refine features through progressive fusion.
 4. **Segmentation decoding:** Cross-scale fusion and upsampling produce four segmentation predictions and one coarse prediction for training supervision.
 
@@ -26,17 +26,28 @@ The current implementation uses an input resolution of **384 × 384**. The testi
 
 ## 🧩 Requirements
 
-- Python with PyTorch and torchvision compatible with your CUDA environment
-- An NVIDIA GPU with CUDA support; the current entry points use `.cuda()`
-- `timm`, `numpy`, `Pillow`, `opencv-python`, and `tensorboardX`
+The following versions were read from the server's `mynet` environment:
 
-After installing a compatible CUDA-enabled PyTorch and torchvision pair, install the remaining dependencies:
+| Component | Version |
+| --- | --- |
+| Operating system | Ubuntu 20.04.6 LTS |
+| Python | 3.9.21 |
+| PyTorch | 2.6.0+cu118 |
+| torchvision | 0.21.0+cu118 |
+| PyTorch CUDA build | 11.8 |
+| timm | 1.0.15 |
+
+Create an environment and install the pinned project dependencies:
 
 ```bash
-python -m pip install timm numpy Pillow opencv-python tensorboardX
+conda create -n rdnet python=3.9.21 -y
+conda activate rdnet
+python -m pip install -r request.txt
 ```
 
-`ptflops` is optional and is only needed for the standalone complexity analysis in `models/smt.py`.
+`request.txt` pins the project's direct dependencies to the server versions, including NumPy, Pillow, OpenCV, tensorboardX, and ptflops. It includes the official CUDA 11.8 wheel index for PyTorch; the PyTorch/torchvision pairing matches the [official installation instructions](https://pytorch.org/get-started/previous-versions/#v260).
+
+An NVIDIA GPU with a compatible driver is required because the current entry points use `.cuda()`. `ptflops` is included for the standalone complexity analysis in `models/smt.py`. These versions were inspected and the main packages imported successfully on the server; a fresh environment installation and a full training run have not been verified.
 
 ## 📦 Pretrained Weights
 

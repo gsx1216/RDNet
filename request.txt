@@ -1,0 +1,19 @@
+# Direct project dependencies recorded from the server's mynet environment.
+# Recorded on 2026-10-13: Ubuntu 20.04.6, Python 3.9.21, PyTorch CUDA 11.8.
+# This pins project dependencies, not every transitive package in the environment.
+# Install with: python -m pip install -r request.txt
+
+# Official CUDA 11.8 wheels for the exact PyTorch builds used on the server.
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.6.0+cu118
+torchvision==0.21.0+cu118
+
+# Training, data loading, and inference.
+timm==1.0.15
+numpy==1.26.3
+Pillow==11.0.0
+opencv-python==4.11.0.86
+tensorboardX==2.6.2.2
+
+# Used by the standalone complexity analysis in models/smt.py.
+ptflops==0.7.4
