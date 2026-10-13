@@ -26,7 +26,7 @@ The current implementation uses an input resolution of **384 × 384**. The testi
 
 ## 🧩 Requirements
 
-The following versions were read from the server's `mynet` environment:
+The following versions were read from the server's `RDNet` environment:
 
 | Component | Version |
 | --- | --- |
