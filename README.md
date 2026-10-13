@@ -18,7 +18,7 @@ The model is defined in `models/RDNet.py`. Pretrained weights are available thro
 RDNet processes an input image through four stages:
 
 1. **Multi-scale feature extraction:** SMT-Tiny extracts features at four spatial resolutions.
-2. **Coarse estimation and feature mixing:** A coarse estimation module predicts an initial mask, while `ImprovedTimeMixer` processes the backbone features.
+2. **Coarse estimation and feature mixing:** A coarse estimation module predicts an initial mask, while `CFRM` processes the backbone features.
 3. **Attention and filtering:** Channel attention, spatial attention, and learnable filters refine features through progressive fusion.
 4. **Segmentation decoding:** Cross-scale fusion and upsampling produce four segmentation predictions and one coarse prediction for training supervision.
 
